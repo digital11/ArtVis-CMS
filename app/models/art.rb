@@ -1,5 +1,5 @@
 class Art < ActiveRecord::Base
-  has_attached_file :image, :styles => { :large => ["5000",:jpg], :thumb => ["500x500",:jpg]}
+  has_attached_file :image, :styles => { :large => ["5000",:jpg], :thumb => ["500x500",:jpg], :mini => ["50x50", :jpg]}
   belongs_to :artist
   belongs_to :account
   has_and_belongs_to_many :mediums
