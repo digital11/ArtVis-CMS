@@ -4,5 +4,7 @@ class Art < ActiveRecord::Base
   belongs_to :account
   has_and_belongs_to_many :mediums
   has_and_belongs_to_many :styles
-  attr_accessible :account_id, :artist_id, :description, :title, :image, :medium_ids, :style_ids
+
+  attr_accessible :account_id, :artist_id, :description, :title, :image, :medium_ids, :style_ids, :tag_list
+  acts_as_taggable
 end

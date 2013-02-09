@@ -22,6 +22,11 @@
   <b>Styles:</b>
   <%= @art.styles.map{|cat| cat.name}.join(', ').to_s %>
 </p>
+<p>
+  <b>Tags:</b>
+
+<%= @art.tag_list %>
+</p>
 
 
 <p><%= image_tag @art.image.url(:thumb) %></p>

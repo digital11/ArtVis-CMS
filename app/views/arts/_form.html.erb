@@ -33,6 +33,11 @@
       </ul>
       <input id="new_style" type="text" /><a href="javascript:;" class="btn" id="add_style">Add Style</a>
     </div>
+
+    <div class="field">
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+    </div>
   </div>
 
   <div class="form-actions">
