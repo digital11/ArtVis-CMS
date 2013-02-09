@@ -11,7 +11,58 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209012924) do
+ActiveRecord::Schema.define(:version => 20130209035431) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.integer  "primary_user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+  end
+
+  create_table "artists", :force => true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "arts", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "artist_id"
+    t.integer  "account_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "arts_mediums", :id => false, :force => true do |t|
+    t.integer "medium_id"
+    t.integer "art_id"
+  end
+
+  create_table "arts_styles", :id => false, :force => true do |t|
+    t.integer "style_id"
+    t.integer "art_id"
+  end
+
+  create_table "mediums", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "mediums", ["account_id"], :name => "index_mediums_on_account_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +74,15 @@ ActiveRecord::Schema.define(:version => 20130209012924) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "styles", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "styles", ["account_id"], :name => "index_styles_on_account_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20130209012924) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.integer  "account_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

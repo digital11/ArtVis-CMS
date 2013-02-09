@@ -1,0 +1,4 @@
+<h3>My Account</h3>
+<%= render 'display' %>
+
+<%= link_to 'Edit', edit_account_path(@account), class: "btn-primary btn" unless current_user.account != @account %>

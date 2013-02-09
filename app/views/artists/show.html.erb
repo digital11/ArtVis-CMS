@@ -1,0 +1,19 @@
+<h3><%= @artist.name %></h3><%= link_to 'Edit', edit_artist_path(@artist), class: "btn" %>
+
+<p>
+  <b>Bio:</b>
+  <div><%= @artist.bio %></div>
+</p>
+
+<h4>Art</h4>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Thumbnail</th>
+    <th></th>
+    <th></th>
+  </tr>
+<%= render @art %>
+</table>
+<%= link_to 'Add Art', new_art_path(artist:@artist), class: "btn btn-primary" %>
+<%= link_to 'Back', artists_path, class: 'btn' %>

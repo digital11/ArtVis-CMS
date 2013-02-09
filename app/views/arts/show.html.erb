@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @art.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @art.description %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @art.artist.name %>
+</p>
+<p>
+  <b>Mediums:</b>
+  <%= @art.mediums.map{|cat| cat.name}.join(', ').to_s  %>
+</p>
+<p>
+  <b>Styles:</b>
+  <%= @art.styles.map{|cat| cat.name}.join(', ').to_s %>
+</p>
+
+
+<p><%= image_tag @art.image.url(:thumb) %></p>
+
+
+
+<%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary' %>
+<%= link_to 'Back', @art.artist, class: 'btn' %>

@@ -1,0 +1,41 @@
+<%= simple_form_for(@art) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= label_tag :image, "Image" %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :artist_id %>
+
+    <div>
+      <%= label_tag "Mediums" %>
+      <ul id="mediums">
+      <% @mediums.each do |m| %>
+        <li>
+          <%= check_box_tag "art[medium_ids][]", m.id, @art.mediums.include?(m) %>
+          <%= m.name %>
+        </li>
+      <% end %>
+      </ul>
+      <input id="new_medium" type="text" /><a href="javascript:;" class="btn" id="add_medium">Add Medium</a>
+    </div>
+
+    <div>
+      <%= label_tag "Styles" %>
+      <ul id="styles">
+        <% @styles.each do |m| %>
+            <li>
+              <%= check_box_tag "art[style_ids][]", m.id, @art.styles.include?(m) %>
+              <%= m.name %>
+            </li>
+        <% end %>
+      </ul>
+      <input id="new_style" type="text" /><a href="javascript:;" class="btn" id="add_style">Add Style</a>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
